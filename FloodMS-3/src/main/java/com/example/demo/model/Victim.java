@@ -1,8 +1,6 @@
 package com.example.demo.model;
 
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 
 import javax.persistence.GenerationType;

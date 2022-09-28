@@ -3,31 +3,32 @@ package com.example.demo.Services;
 import java.util.List;
 
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.model.FM_Request;
-import com.example.demo.repository.FM_Request_Repository;
+import com.example.demo.repository.FM_RequestRepository;
 
 @Service
 public class FM_RequestServiceImpl implements FM_RequestService {
 
 	@Autowired
-	private FM_Request_Repository food_medicalRepository;
+	private FM_RequestRepository fm_RequestRepository;
 	
 	@Override
-	public FM_Request addFood_Medical_Request(FM_Request food_medicals_request) {
+	public FM_Request addFM_Request(FM_Request fm_Request) {
 		
-		food_medicalRepository.save(food_medicals_request);
-		return food_medicals_request;
+		fm_RequestRepository.save(fm_Request);
+		return fm_Request;
 	}
 
 
 	@Override
-	public List<FM_Request> getFood_Medical_request() {
+	public List<FM_Request> getFM_Request() {
 		
 		//findall return all Medical
-		return food_medicalRepository.findAll();
+		return fm_RequestRepository.findAll();
 
     }
 }

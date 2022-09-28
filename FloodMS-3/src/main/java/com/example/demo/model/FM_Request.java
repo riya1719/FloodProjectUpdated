@@ -27,7 +27,7 @@ public class FM_Request {
 	   
 	   @Temporal(TemporalType.DATE)
 	    @Column
-	    private Date date = new Date(System.currentTimeMillis());;
+	    private Date date = new Date(System.currentTimeMillis());
 	   
 	   @Column(name = "REQ_TYPE")
 	    private String req_type;
@@ -72,7 +72,6 @@ public class FM_Request {
 	public FM_Request(int fm_reqid, int victim_id, Date date, String req_type, int cotton_q, int bandages_q,
 			int dettol_q, int painkiller_q, int firstaid_q, int water_q, int ricedal_q, int babyfood_q, int biscuit_q,
 			int milk_q) {
-		super();
 		this.fm_reqid = fm_reqid;
 		this.victim_id = victim_id;
 		this.date = date;

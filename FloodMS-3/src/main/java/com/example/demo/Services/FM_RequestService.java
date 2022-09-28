@@ -11,8 +11,8 @@ import com.example.demo.model.FM_Request;
 public interface FM_RequestService {
 
 		
-		FM_Request addFood_Medical_Request(FM_Request food_medicals_request);
+		FM_Request addFM_Request(FM_Request fm_Requestrequest);
 		
-		public List<FM_Request> getFood_Medical_request(); 
+		public List<FM_Request> getFM_Request(); 
 
 }

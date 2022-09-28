@@ -30,16 +30,16 @@ public class FM_Request_Controller {
 	
 	
 	@Autowired               //making obj of interface which is not allowedd
-	private FM_RequestService f_m_request_Service;
+	private FM_RequestService fm_RequestService;
 	
-	@PostMapping("/f")  //post method mapping for url request (/victims)
-	public FM_Request addFood_Medical_Request(@RequestBody FM_Request food_medicals_request) {
-		return this.f_m_request_Service.addFood_Medical_Request(food_medicals_request);
+	@PostMapping("/fmrequests")  //post method mapping for url request (/victims)
+	public FM_Request addFM_Request(@RequestBody FM_Request fm_Request) {
+		return this.fm_RequestService.addFM_Request(fm_Request);
 	}
 	
-	@GetMapping("/f")
-	public List<FM_Request> getFood_Medical_request(){	
-	    return this.f_m_request_Service.getFood_Medical_request();
+	@GetMapping("/fmrequests")
+	public List<FM_Request> getFM_Request(){	
+	    return this.fm_RequestService.getFM_Request();
 	}
 
 }

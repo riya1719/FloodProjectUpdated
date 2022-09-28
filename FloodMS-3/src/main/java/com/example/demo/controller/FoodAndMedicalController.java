@@ -2,6 +2,7 @@ package com.example.demo.controller;
 import java.util.HashMap;
 
 
+
 import java.util.List;
 import java.util.Map;
 
@@ -17,11 +18,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.demo.Services.MedicalService;
+import com.example.demo.Services.FoodAndMedicalService;
 import com.example.demo.Services.VictimService;
 import com.example.demo.exception.ResourceNotFoundException;
 import com.example.demo.model.FoodAndMedical;
-import com.example.demo.repository.MedicalRepository;
 
 @RestController
 @CrossOrigin
@@ -29,17 +29,17 @@ import com.example.demo.repository.MedicalRepository;
 public class FoodAndMedicalController {
 	
 	@Autowired               //making obj of interface which is not allowedd
-	private MedicalService medicalService;
+	private FoodAndMedicalService fmService;
 	
 	
 	@PostMapping("/foodAndmedicals")  //post method mapping for url request (/medicals)
 	public FoodAndMedical addMedical(@RequestBody FoodAndMedical medicals) {
-		return this.medicalService.addMedical(medicals);
+		return this.fmService.addFoodAndMedical(medicals);
 	}
 	
 	@GetMapping("/foodAndmedicals")
-	public List<FoodAndMedical> getMedical(){	
-	    return this.medicalService.getMedical();
+	public List<FoodAndMedical> getFoodAndMedical(){	
+	    return this.fmService.getFoodAndMedical();
 	}
 
 			

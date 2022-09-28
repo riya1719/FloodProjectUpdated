@@ -1,10 +1,14 @@
 package com.example.demo.model;
 
+import java.util.Date;
+
 import javax.persistence.Column;
 
 
 import javax.persistence.Entity;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.persistence.GenerationType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -45,15 +49,16 @@ public class Donation {
 	@Column(name="TRANSACTION_ID")
 	private int txid;
 	
-	@Column(name = "DATE")
-    private String date;
+	@Temporal(TemporalType.DATE)
+    @Column
+    private Date date = new Date(System.currentTimeMillis());
 	
 	public Donation() {
 		
 	}
 
 	public Donation(int donation_id, String d_fname, String d_lname, String d_addr, String d_city, int d_contact,
-			String d_email, String donation_type, int amount, int txid, String date) {
+			String d_email, String donation_type, int amount, int txid, Date date) {
 		super();
 		this.donation_id = donation_id;
 		this.d_fname = d_fname;
@@ -148,11 +153,11 @@ public class Donation {
 		this.txid = txid;
 	}
 
-	public String getDate() {
+	public Date getDate() {
 		return date;
 	}
 
-	public void setDate(String date) {
+	public void setDate(Date date) {
 		this.date = date;
 	}
 
