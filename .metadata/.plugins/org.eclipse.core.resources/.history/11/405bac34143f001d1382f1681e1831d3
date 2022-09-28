@@ -1,0 +1,163 @@
+package com.example.demo.model;
+
+import javax.persistence.Column;
+
+
+import javax.persistence.Entity;
+import javax.persistence.Table;
+import javax.persistence.GenerationType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
+
+@Entity
+@Table(name = "Individual")
+public class Individual {
+
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int IN_ID;
+	
+	@Column(name="IN_FNAME")
+	private String IN_FNAME;
+	
+	@Column(name="IN_LNAME")
+	private String IN_LNAME;
+	
+	@Column(name="IN_ADDRESS")
+	private String IN_ADDRESS;
+	
+	@Column(name="IN_City")
+	private String IN_City;
+	
+	@Column(name="IN_CONTACT")
+	private int IN_CONTACT;
+	@Column(name="IN_EMAIL")
+	private String IN_EMAIL;
+	@Column(name="DONATION_TYPE")
+	private String DONATION_TYPE;
+	
+	@Column(name="AMOUNT")
+	private int AMOUNT;
+	
+	@Column(name="Transaction_ID")
+	private int txID;
+	
+	public Individual() {
+		
+	}
+	
+	public Individual(int iN_ID, String iN_FNAME, String iN_LNAME, String iN_ADDRESS, String iN_City, int iN_CONTACT,
+			String iN_EMAIL, String dONATION_TYPE, int aMOUNT, int txID) {
+		IN_ID = iN_ID;
+		IN_FNAME = iN_FNAME;
+		IN_LNAME = iN_LNAME;
+		IN_ADDRESS = iN_ADDRESS;
+		IN_City = iN_City;
+		IN_CONTACT = iN_CONTACT;
+		IN_EMAIL = iN_EMAIL;
+		DONATION_TYPE = dONATION_TYPE;
+		AMOUNT = aMOUNT;
+		this.txID = txID;
+	}
+	
+	
+
+	public int getIN_ID() {
+		return IN_ID;
+	}
+
+	public void setIN_ID(int iN_ID) {
+		IN_ID = iN_ID;
+	}
+
+	public String getIN_FNAME() {
+		return IN_FNAME;
+	}
+
+	public void setIN_FNAME(String iN_FNAME) {
+		IN_FNAME = iN_FNAME;
+	}
+
+	public String getIN_LNAME() {
+		return IN_LNAME;
+	}
+
+	public void setIN_LNAME(String iN_LNAME) {
+		IN_LNAME = iN_LNAME;
+	}
+
+	public String getIN_ADDRESS() {
+		return IN_ADDRESS;
+	}
+
+	public void setIN_ADDRESS(String iN_ADDRESS) {
+		IN_ADDRESS = iN_ADDRESS;
+	}
+
+	public String getIN_City() {
+		return IN_City;
+	}
+
+	public void setIN_City(String iN_City) {
+		IN_City = iN_City;
+	}
+
+	public int getIN_CONTACT() {
+		return IN_CONTACT;
+	}
+
+	public void setIN_CONTACT(int iN_CONTACT) {
+		IN_CONTACT = iN_CONTACT;
+	}
+
+	public String getIN_EMAIL() {
+		return IN_EMAIL;
+	}
+
+	public void setIN_EMAIL(String iN_EMAIL) {
+		IN_EMAIL = iN_EMAIL;
+	}
+
+	public String getDONATION_TYPE() {
+		return DONATION_TYPE;
+	}
+
+	public void setDONATION_TYPE(String dONATION_TYPE) {
+		DONATION_TYPE = dONATION_TYPE;
+	}
+
+	public int getAMOUNT() {
+		return AMOUNT;
+	}
+
+	public void setAMOUNT(int aMOUNT) {
+		AMOUNT = aMOUNT;
+	}
+
+	public int getTxID() {
+		return txID;
+	}
+
+	public void setTxID(int txID) {
+		this.txID = txID;
+	}
+
+	@Override
+	public String toString() {
+		return "Individual [IN_ID=" + IN_ID + ", IN_FNAME=" + IN_FNAME + ", IN_LNAME=" + IN_LNAME + ", IN_ADDRESS="
+				+ IN_ADDRESS + ", IN_City=" + IN_City + ", IN_CONTACT=" + IN_CONTACT + ", IN_EMAIL=" + IN_EMAIL
+				+ ", DONATION_TYPE=" + DONATION_TYPE + ", AMOUNT=" + AMOUNT + ", txID=" + txID + "]";
+	}
+
+
+
+	
+
+
+	
+
+	}
+
+

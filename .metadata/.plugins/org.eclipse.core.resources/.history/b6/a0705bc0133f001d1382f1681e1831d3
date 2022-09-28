@@ -1,0 +1,54 @@
+package com.example.demo.model;
+
+import javax.persistence.Column;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "Rescue_Request")
+public class RescueRequest {
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY) 
+	private int rescue_reqid;
+	
+	@Column(name = "VICTIM_ID")
+    private int victim_id; // fk
+	
+	@Column(name = "FIRST_NAME")
+    private String v_fname;
+	
+	@Column(name = "LAST_NAME")
+    private String v_lname;
+	
+	@Column(name = "CONTACT")
+    private long v_contanct;
+	
+	@Column(name = "ADDRESS")
+    private String v_addr;
+	
+	@Column(name = "CITY")
+    private String v_city;
+	
+	@Column(name = "COUNT_OF_PEOPLE")
+    private int v_count;
+	
+	
+	public RescueRequest() {
+	}
+
+	
+
+	
+
+	
+	
+	
+	
+	
+
+}

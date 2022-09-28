@@ -1,0 +1,14 @@
+package com.example.demo.Services;
+
+import java.util.List;
+
+import org.springframework.stereotype.Service;
+
+@Service
+public interface ShelterRequestService {
+
+	ShelterRequestService  addMedical(ShelterRequestService  shelterRequests);
+	
+	public List<ShelterRequestService > getshelterRequest (); 
+	
+}

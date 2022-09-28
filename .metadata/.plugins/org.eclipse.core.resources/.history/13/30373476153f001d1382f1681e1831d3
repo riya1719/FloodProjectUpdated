@@ -1,0 +1,176 @@
+package com.example.demo.model;
+
+import javax.persistence.Entity;
+
+import javax.persistence.Column;
+
+import javax.persistence.GenerationType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
+
+
+@Entity
+@Table(name = "Volunteer")
+public class Volunteer {
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int victim_id;
+	
+	@Column(name = "FIRST_NAME")
+	private String vl_fname;
+	
+	@Column(name = "LAST_NAME")
+	private String vl_lname;
+	
+	@Column(name = "BLOOD_GROUP")
+	private String blood_grp;
+	
+	@Column(name = "CONTACT")
+	private String vl_contact;
+	
+	@Column(name = "ADDRESS")
+	private String vl_addr;
+	
+	@Column(name = "CITY")
+	private String vl_city;
+	
+	@Column(name = "EMAIL")
+	private String vl_email;
+	
+	@Column(name = "Type_Of_Work")
+	private String vl_tow;
+	
+	@Column(name = "USERNAME")
+	private String username;
+	
+	@Column(name = "PASSWORD")
+	private String password;
+
+	public Volunteer() {
+		super();
+	}
+
+	public Volunteer(int v_ID, String v_FNAME, String v_LNAME, String v_BLOOD_GROUP, String v_CONTACT, String v_ADDRESS,
+			String v_CITY_NAME, String v_EMAIL, String v_TypeOfWork, String username, String password) {
+		super();
+		V_ID = v_ID;
+		V_FNAME = v_FNAME;
+		V_LNAME = v_LNAME;
+		V_BLOOD_GROUP = v_BLOOD_GROUP;
+		V_CONTACT = v_CONTACT;
+		V_ADDRESS = v_ADDRESS;
+		V_CITY_NAME = v_CITY_NAME;
+		V_EMAIL = v_EMAIL;
+		V_TypeOfWork = v_TypeOfWork;
+		this.username = username;
+		this.password = password;
+	}
+
+	public int getV_ID() {
+		return V_ID;
+	}
+
+	public void setV_ID(int v_ID) {
+		V_ID = v_ID;
+	}
+
+	public String getV_FNAME() {
+		return V_FNAME;
+	}
+
+	public void setV_FNAME(String v_FNAME) {
+		V_FNAME = v_FNAME;
+	}
+
+	public String getV_LNAME() {
+		return V_LNAME;
+	}
+
+	public void setV_LNAME(String v_LNAME) {
+		V_LNAME = v_LNAME;
+	}
+
+	public String getV_BLOOD_GROUP() {
+		return V_BLOOD_GROUP;
+	}
+
+	public void setV_BLOOD_GROUP(String v_BLOOD_GROUP) {
+		V_BLOOD_GROUP = v_BLOOD_GROUP;
+	}
+
+	public String getV_CONTACT() {
+		return V_CONTACT;
+	}
+
+	public void setV_CONTACT(String v_CONTACT) {
+		V_CONTACT = v_CONTACT;
+	}
+
+	public String getV_ADDRESS() {
+		return V_ADDRESS;
+	}
+
+	public void setV_ADDRESS(String v_ADDRESS) {
+		V_ADDRESS = v_ADDRESS;
+	}
+
+	public String getV_CITY_NAME() {
+		return V_CITY_NAME;
+	}
+
+	public void setV_CITY_NAME(String v_CITY_NAME) {
+		V_CITY_NAME = v_CITY_NAME;
+	}
+
+	public String getV_EMAIL() {
+		return V_EMAIL;
+	}
+
+	public void setV_EMAIL(String v_EMAIL) {
+		V_EMAIL = v_EMAIL;
+	}
+
+	public String getV_TypeOfWork() {
+		return V_TypeOfWork;
+	}
+
+	public void setV_TypeOfWork(String v_TypeOfWork) {
+		V_TypeOfWork = v_TypeOfWork;
+	}
+
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	@Override
+	public String toString() {
+		return "Volunteer [V_ID=" + V_ID + ", V_FNAME=" + V_FNAME + ", V_LNAME=" + V_LNAME + ", V_BLOOD_GROUP="
+				+ V_BLOOD_GROUP + ", V_CONTACT=" + V_CONTACT + ", V_ADDRESS=" + V_ADDRESS + ", V_CITY_NAME="
+				+ V_CITY_NAME + ", V_EMAIL=" + V_EMAIL + ", V_TypeOfWork=" + V_TypeOfWork + ", username=" + username
+				+ ", password=" + password + "]";
+	}
+	
+	
+	
+	
+
+}

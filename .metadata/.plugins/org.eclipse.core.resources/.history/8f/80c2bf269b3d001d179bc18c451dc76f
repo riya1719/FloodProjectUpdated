@@ -1,0 +1,86 @@
+package com.example.demo.controller;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import net.codejava.exception.ResourceNotFoundException;
+import net.codejava.model.Organization;
+import net.codejava.repository.OrganizationRepository;
+
+import org.springframework.web.bind.annotation.RequestBody;
+@RestController
+@RequestMapping("/api/v1")
+public class OrganizationController {
+	@Autowired
+	
+	
+private OrganizationRepository  organizationRepository ;	
+	@GetMapping("/Organization")
+	public List<Organization> getAllOrganization()
+	{
+		return organizationRepository.findAll();
+	}
+	
+	
+	
+	@PostMapping ("/Organization")
+	public Organization createOrganization(@RequestBody Organization organization)
+	{
+		return organizationRepository.save(organization);
+	}
+		
+	@PostMapping ("/Organization/{id}")
+	public ResponseEntity<Organization> getOrganizationById(@PathVariable Long id)
+	{
+		Organization organization = organizationRepository.findById(id)
+				.orElseThrow(() -> new ResourceNotFoundException("Organization does not exit with id: " + id));
+	return ResponseEntity.ok(organization);
+	}
+	// update victim rest API
+		@PutMapping("/Organization/{id}")
+		public ResponseEntity <Organization> updateOrganization(@PathVariable Long id, @RequestBody Organization organizationDetails)
+		{
+			Organization organization = organizationRepository.findById(id)
+					.orElseThrow(() -> new ResourceNotFoundException("Organization does not exit with id: " + id));
+			organization.setN_TYPEOF_ORGANIZATION(organizationDetails.getN_TYPEOF_ORGANIZATION());
+			organization.setN_NAMEOF_ORG(organizationDetails.getN_NAMEOF_ORG());
+			organization.setN_NAMEOF_AUTH(organizationDetails.getN_NAMEOF_AUTH());
+			organization.setN_REGISTRATION_ID(organizationDetails.getN_REGISTRATION_ID());
+			organization.setN_ADDRESS(organizationDetails.getN_ADDRESS());
+			organization.setN_CITYNAME(organizationDetails.getN_CITYNAME());
+			organization.setN_CONTACT(organizationDetails.getN_CONTACT());
+			organization.setN_EMAIL(organizationDetails.getN_EMAIL());
+			organization.setN_WEBSITE(organizationDetails.getN_WEBSITE());
+			organization.setN_USERID(organizationDetails.getN_USERID());
+			organization.setN_PASSWARD(organizationDetails.getN_PASSWARD());
+			
+			
+			
+			Organization updatedOrganization = organizationRepository.save(organization);
+		return ResponseEntity.ok(updatedOrganization);
+		}
+	
+	// delete victim rest API
+	@DeleteMapping("/Organization/{id}")
+	public ResponseEntity <Map<String,Boolean>> deleteOrganizationr(@PathVariable Long id)
+	{
+		Organization organization = organizationRepository.findById(id)
+				.orElseThrow(() -> new ResourceNotFoundException("Organization does not exit with id: " + id));
+		
+		organizationRepository.delete(organization);
+		Map<String,Boolean>response = new HashMap<>();
+		
+			return ResponseEntity.ok(response);
+		
+		
+}
+}

@@ -49,8 +49,123 @@ public class Volunteer {
 	private String password;
 
 	public Volunteer() {
-		super();
 	}
+
+	public Volunteer(int victim_id, String vl_fname, String vl_lname, String blood_grp, String vl_contact,
+			String vl_addr, String vl_city, String vl_email, String vl_tow, String username, String password) {
+		super();
+		this.victim_id = victim_id;
+		this.vl_fname = vl_fname;
+		this.vl_lname = vl_lname;
+		this.blood_grp = blood_grp;
+		this.vl_contact = vl_contact;
+		this.vl_addr = vl_addr;
+		this.vl_city = vl_city;
+		this.vl_email = vl_email;
+		this.vl_tow = vl_tow;
+		this.username = username;
+		this.password = password;
+	}
+
+
+
+	public int getVictim_id() {
+		return victim_id;
+	}
+
+	public void setVictim_id(int victim_id) {
+		this.victim_id = victim_id;
+	}
+
+	public String getVl_fname() {
+		return vl_fname;
+	}
+
+	public void setVl_fname(String vl_fname) {
+		this.vl_fname = vl_fname;
+	}
+
+	public String getVl_lname() {
+		return vl_lname;
+	}
+
+	public void setVl_lname(String vl_lname) {
+		this.vl_lname = vl_lname;
+	}
+
+	public String getBlood_grp() {
+		return blood_grp;
+	}
+
+	public void setBlood_grp(String blood_grp) {
+		this.blood_grp = blood_grp;
+	}
+
+	public String getVl_contact() {
+		return vl_contact;
+	}
+
+	public void setVl_contact(String vl_contact) {
+		this.vl_contact = vl_contact;
+	}
+
+	public String getVl_addr() {
+		return vl_addr;
+	}
+
+	public void setVl_addr(String vl_addr) {
+		this.vl_addr = vl_addr;
+	}
+
+	public String getVl_city() {
+		return vl_city;
+	}
+
+	public void setVl_city(String vl_city) {
+		this.vl_city = vl_city;
+	}
+
+	public String getVl_email() {
+		return vl_email;
+	}
+
+	public void setVl_email(String vl_email) {
+		this.vl_email = vl_email;
+	}
+
+	public String getVl_tow() {
+		return vl_tow;
+	}
+
+	public void setVl_tow(String vl_tow) {
+		this.vl_tow = vl_tow;
+	}
+
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	@Override
+	public String toString() {
+		return "Volunteer [victim_id=" + victim_id + ", vl_fname=" + vl_fname + ", vl_lname=" + vl_lname
+				+ ", blood_grp=" + blood_grp + ", vl_contact=" + vl_contact + ", vl_addr=" + vl_addr + ", vl_city="
+				+ vl_city + ", vl_email=" + vl_email + ", vl_tow=" + vl_tow + ", username=" + username + ", password="
+				+ password + "]";
+	}
+	
+	
 
 
 	
