@@ -1,152 +1,202 @@
 package com.example.demo.model;
 
 import javax.persistence.Entity;
-
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 
 import javax.persistence.GenerationType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "Victim ") // Victim Table
+@Table(name = "Victim") // Victim Table
 public class Victim {
-	
+
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY) 
-	private int VC_ID;
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "v_id")
+	private long victim_id;
 	
-	@Column(name = "VICTIM_NAME")
-    private String vfirstName;
+	@Column(name = "FIRST_NAME")
+	private String v_fname;
 	
 	@Column(name = "LAST_NAME")
-    private String vlastName;
+	private String v_lname;
 	
-	@Column(name = "VICTIM_CONTACT")
-    private long vMobno;
+	@Column(name = "CONTACT")
+	private long v_contact;
 	
-	@Column(name = "VICTIM_ADD")
-    private String vAddress;
+	@Column(name = "ADDRESS")
+	private String v_addr;
 	
-	@Column(name = "VICTIM_CITY")
-    private String vCity;
+	@Column(name = "CITY")
+	private String v_city;
 	
-	@Column(name = "VICTIM_EMAIL")
-    private String vEmail;
+	@Column(name = "EMAIL")
+	private String v_email;
 	
-	@Column(name = "VICTIM_USER")
-    private String vUserName;
+	@Column(name = "USERNAME")
+	private String username;
 	
-	@Column(name = "VICTIM_PASS")
-    private String vPassword;
-    
-    public Victim()
-    {
-    	
-    }
+	@Column(name = "PASSWORD")
+	private String password;
+	
+	@OneToOne (targetEntity = RescueRequest.class, cascade = CascadeType.ALL)
+	@JoinColumn(name = "v_fk", referencedColumnName = "r_reqid")
+	private RescueRequest rescueRequest;
+	
+	
+	public Victim() {
+	
+	}
 
-	
-	
 
-
-	public Victim(int vC_ID, String vfirstName, String vlastName, long vMobno, String vAddress, String vCity,
-			String vEmail, String vUserName, String vPassword) {
+	public Victim(long victim_id, String v_fname, String v_lname, long v_contact, String v_addr, String v_city,
+			String v_email, String username, String password, RescueRequest rescueRequest) {
 		super();
-		VC_ID = vC_ID;
-		this.vfirstName = vfirstName;
-		this.vlastName = vlastName;
-		this.vMobno = vMobno;
-		this.vAddress = vAddress;
-		this.vCity = vCity;
-		this.vEmail = vEmail;
-		this.vUserName = vUserName;
-		this.vPassword = vPassword;
+		this.victim_id = victim_id;
+		this.v_fname = v_fname;
+		this.v_lname = v_lname;
+		this.v_contact = v_contact;
+		this.v_addr = v_addr;
+		this.v_city = v_city;
+		this.v_email = v_email;
+		this.username = username;
+		this.password = password;
+		this.rescueRequest = rescueRequest;
 	}
 
 
 
 
 
-	public int getVC_ID() {
-		return VC_ID;
+
+
+
+	public long getVictim_id() {
+		return victim_id;
 	}
 
-	public void setVC_ID(int vC_ID) {
-		VC_ID = vC_ID;
+
+	public void setVictim_id(long victim_id) {
+		this.victim_id = victim_id;
 	}
 
-	public String getVfirsttName() {
-		return vfirstName;
+
+
+
+	public String getV_fname() {
+		return v_fname;
 	}
 
-	public void setVfirsttName(String vfirsttName) {
-		this.vfirstName = vfirsttName;
+
+	public void setV_fname(String v_fname) {
+		this.v_fname = v_fname;
 	}
 
-	public String getVlastName() {
-		return vlastName;
+
+	public String getV_lname() {
+		return v_lname;
 	}
 
-	public void setVlastName(String vlastName) {
-		this.vlastName = vlastName;
+
+	public void setV_lname(String v_lname) {
+		this.v_lname = v_lname;
 	}
 
-	public long getvMobno() {
-		return vMobno;
+
+	public long getV_contact() {
+		return v_contact;
 	}
 
-	public void setvMobno(long vMobno) {
-		this.vMobno = vMobno;
+
+	public void setV_contact(long v_contact) {
+		this.v_contact = v_contact;
 	}
 
-	public String getvAddress() {
-		return vAddress;
+
+	public String getV_addr() {
+		return v_addr;
 	}
 
-	public void setvAddress(String vAddress) {
-		this.vAddress = vAddress;
+
+	public void setV_addr(String v_addr) {
+		this.v_addr = v_addr;
 	}
 
-	public String getvCity() {
-		return vCity;
+
+	public String getV_city() {
+		return v_city;
 	}
 
-	public void setvCity(String vCity) {
-		this.vCity = vCity;
+
+	public void setV_city(String v_city) {
+		this.v_city = v_city;
 	}
 
-	public String getvEmail() {
-		return vEmail;
+
+	public String getV_email() {
+		return v_email;
 	}
 
-	public void setvEmail(String vEmail) {
-		this.vEmail = vEmail;
+
+	public void setV_email(String v_email) {
+		this.v_email = v_email;
 	}
 
-	public String getvUserName() {
-		return vUserName;
+
+	public String getUsername() {
+		return username;
 	}
 
-	public void setvUserName(String vUserName) {
-		this.vUserName = vUserName;
+
+	public void setUsername(String username) {
+		this.username = username;
 	}
 
-	public String getvPassword() {
-		return vPassword;
+
+	public String getPassword() {
+		return password;
 	}
 
-	public void setvPassword(String vPassword) {
-		this.vPassword = vPassword;
+
+	public void setPassword(String password) {
+		this.password = password;
 	}
+
+	public RescueRequest getRescueRequest() {
+		return rescueRequest;
+	}
+
+	public void setRescueRequest(RescueRequest rescueRequest) {
+		this.rescueRequest = rescueRequest;
+	}
+
+
+
+
+
+
+
 
 	@Override
 	public String toString() {
-		return "Victim [VC_ID=" + VC_ID + ", vfirstName=" + vfirstName + ", vlastName=" + vlastName + ", vMobno="
-				+ vMobno + ", vAddress=" + vAddress + ", vCity=" + vCity + ", vEmail=" + vEmail + ", vUserName="
-				+ vUserName + ", vPassword=" + vPassword + "]";
+		return "Victim [victim_id=" + victim_id + ", v_fname=" + v_fname + ", v_lname=" + v_lname + ", v_contact="
+				+ v_contact + ", v_addr=" + v_addr + ", v_city=" + v_city + ", v_email=" + v_email + ", username="
+				+ username + ", password=" + password + ", rescueRequest=" + rescueRequest + "]";
 	}
-   
-    
+
+
+
+	
+	
+
+
+	
+	
+     
 
 }

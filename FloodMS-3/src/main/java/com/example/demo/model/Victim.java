@@ -1,57 +1,61 @@
 package com.example.demo.model;
 
 import javax.persistence.Entity;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 
 import javax.persistence.GenerationType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
-
 
 @Entity
 @Table(name = "Victim") // Victim Table
 public class Victim {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY) 
-	private int victim_id;
-	
-//	@OneToOne(mappedBy = "victim")
-//    private RescueRequest rescueRequest;
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "v_id")
+	private long victim_id;
 	
 	@Column(name = "FIRST_NAME")
-    private String v_fname;
+	private String v_fname;
 	
 	@Column(name = "LAST_NAME")
-    private String v_lname;
+	private String v_lname;
 	
 	@Column(name = "CONTACT")
-    private long v_contact;
+	private long v_contact;
 	
 	@Column(name = "ADDRESS")
-    private String v_addr;
+	private String v_addr;
 	
 	@Column(name = "CITY")
-    private String v_city;
+	private String v_city;
 	
 	@Column(name = "EMAIL")
-    private String v_email;
+	private String v_email;
 	
 	@Column(name = "USERNAME")
-    private String username;
+	private String username;
 	
 	@Column(name = "PASSWORD")
-    private String password;
+	private String password;
 	
-
+	@OneToOne (targetEntity = RescueRequest.class, cascade = CascadeType.ALL)
+	@JoinColumn(name = "v_fk", referencedColumnName = "r_reqid")
+	private RescueRequest rescueRequest;
+	
+	
 	public Victim() {
+	
 	}
 
 
-	public Victim(int victim_id, String v_fname, String v_lname, long v_contact,
-			String v_addr, String v_city, String v_email, String username, String password) {
+	public Victim(long victim_id, String v_fname, String v_lname, long v_contact, String v_addr, String v_city,
+			String v_email, String username, String password, RescueRequest rescueRequest) {
 		super();
 		this.victim_id = victim_id;
 		this.v_fname = v_fname;
@@ -62,27 +66,26 @@ public class Victim {
 		this.v_email = v_email;
 		this.username = username;
 		this.password = password;
+		this.rescueRequest = rescueRequest;
 	}
 
 
-	public int getVictim_id() {
+
+
+
+
+
+
+	public long getVictim_id() {
 		return victim_id;
 	}
 
 
-	public void setVictim_id(int victim_id) {
+	public void setVictim_id(long victim_id) {
 		this.victim_id = victim_id;
 	}
 
 
-//	public RescueRequest getRescueRequest() {
-//		return rescueRequest;
-//	}
-//
-//
-//	public void setRescueRequest(RescueRequest rescueRequest) {
-//		this.rescueRequest = rescueRequest;
-//	}
 
 
 	public String getV_fname() {
@@ -164,13 +167,30 @@ public class Victim {
 		this.password = password;
 	}
 
+	public RescueRequest getRescueRequest() {
+		return rescueRequest;
+	}
+
+	public void setRescueRequest(RescueRequest rescueRequest) {
+		this.rescueRequest = rescueRequest;
+	}
+
+
+
+
+
+
+
 
 	@Override
 	public String toString() {
-		return "Victim [victim_id=" + victim_id + ", v_fname=" + v_fname
-				+ ", v_lname=" + v_lname + ", v_contact=" + v_contact + ", v_addr=" + v_addr + ", v_city=" + v_city
-				+ ", v_email=" + v_email + ", username=" + username + ", password=" + password + "]";
+		return "Victim [victim_id=" + victim_id + ", v_fname=" + v_fname + ", v_lname=" + v_lname + ", v_contact="
+				+ v_contact + ", v_addr=" + v_addr + ", v_city=" + v_city + ", v_email=" + v_email + ", username="
+				+ username + ", password=" + password + ", rescueRequest=" + rescueRequest + "]";
 	}
+
+
+
 	
 	
 
