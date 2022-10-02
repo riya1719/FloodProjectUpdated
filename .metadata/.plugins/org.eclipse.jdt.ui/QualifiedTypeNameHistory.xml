@@ -1,26 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-    <fullyQualifiedTypeName name="org.springframework.security.authentication.dao.DaoAuthenticationProvider"/>
-    <fullyQualifiedTypeName name="org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder"/>
-    <fullyQualifiedTypeName name="org.springframework.security.config.annotation.web.builders.HttpSecurity"/>
-    <fullyQualifiedTypeName name="com.example.demo.model.Organization"/>
-    <fullyQualifiedTypeName name="com.example.demo.repository.VictimRepository"/>
-    <fullyQualifiedTypeName name="com.example.demo.repository.MedicalRepository"/>
     <fullyQualifiedTypeName name="com.example.demo.model.Medical"/>
     <fullyQualifiedTypeName name="com.example.demo.Services.MedicalService"/>
     <fullyQualifiedTypeName name="com.example.demo.model.Individual"/>
     <fullyQualifiedTypeName name="com.example.demo.repository.IndividualRepository"/>
     <fullyQualifiedTypeName name="com.example.demo.Services.IndividualService"/>
     <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.CrossOrigin"/>
-    <fullyQualifiedTypeName name="com.example.demo.repository.ShelterRepository"/>
     <fullyQualifiedTypeName name="com.example.demo.Services.ShelterService"/>
-    <fullyQualifiedTypeName name="com.example.demo.model.Shelter"/>
-    <fullyQualifiedTypeName name="com.example.demo.repository.ShelterRequestRepository"/>
     <fullyQualifiedTypeName name="com.example.demo.repository.RescueRequestRepository"/>
     <fullyQualifiedTypeName name="com.example.demo.Services.RescueRequestService"/>
-    <fullyQualifiedTypeName name="com.example.demo.model.RescueRequest"/>
     <fullyQualifiedTypeName name="com.example.demo.Services.ShelterRequestService"/>
-    <fullyQualifiedTypeName name="com.example.demo.model.ShelterRequest"/>
     <fullyQualifiedTypeName name="com.example.demo.Repository.FM_Request_Repository"/>
     <fullyQualifiedTypeName name="com.example.demo.repository.FM_Request_Repository"/>
     <fullyQualifiedTypeName name="com.example.demo.Services.FM_RequestService"/>
@@ -32,10 +21,6 @@
     <fullyQualifiedTypeName name="javax.persistence.TemporalType"/>
     <fullyQualifiedTypeName name="java.sql.Date"/>
     <fullyQualifiedTypeName name="javax.persistence.PrePersist"/>
-    <fullyQualifiedTypeName name="javax.persistence.CascadeType"/>
-    <fullyQualifiedTypeName name="javax.persistence.JoinColumn"/>
-    <fullyQualifiedTypeName name="javax.persistence.OneToOne"/>
-    <fullyQualifiedTypeName name="javax.persistence.FetchType"/>
     <fullyQualifiedTypeName name="com.example.demo.repository.DonationRepository"/>
     <fullyQualifiedTypeName name="com.example.demo.Services.DonationService"/>
     <fullyQualifiedTypeName name="com.example.demo.repository.FM_RequestRepository"/>
@@ -60,4 +45,19 @@
     <fullyQualifiedTypeName name="com.example.demo.model.Login"/>
     <fullyQualifiedTypeName name="com.example.demo.Services.LoginService"/>
     <fullyQualifiedTypeName name="org.springframework.stereotype.Service"/>
+    <fullyQualifiedTypeName name="javax.persistence.OneToOne"/>
+    <fullyQualifiedTypeName name="javax.persistence.CascadeType"/>
+    <fullyQualifiedTypeName name="javax.persistence.JoinColumn"/>
+    <fullyQualifiedTypeName name="org.springframework.http.ResponseEntity"/>
+    <fullyQualifiedTypeName name="com.example.demo.model.RescueRequest"/>
+    <fullyQualifiedTypeName name="java.util.List"/>
+    <fullyQualifiedTypeName name="javax.persistence.FetchType"/>
+    <fullyQualifiedTypeName name="javax.persistence.OneToMany"/>
+    <fullyQualifiedTypeName name="com.example.demo.repository.AddMembersRepository"/>
+    <fullyQualifiedTypeName name="com.example.demo.Services.AddMembersService"/>
+    <fullyQualifiedTypeName name="com.example.demo.model.ShelterRequest"/>
+    <fullyQualifiedTypeName name="com.example.demo.model.Shelter"/>
+    <fullyQualifiedTypeName name="com.example.demo.repository.ShelterRepository"/>
+    <fullyQualifiedTypeName name="com.example.demo.model.AddMembers"/>
+    <fullyQualifiedTypeName name="com.example.demo.repository.ShelterRequestRepository"/>
 </qualifiedTypeNameHistroy>

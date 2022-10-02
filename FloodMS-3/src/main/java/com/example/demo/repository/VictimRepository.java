@@ -23,8 +23,11 @@ public interface VictimRepository extends JpaRepository<Victim,Long>{
 	
 	
 	@Query("SELECT u FROM Victim u JOIN u.rescueRequest r")
-	List<Victim> getDetails();
+	List<Victim> getDetailsOfRescuerequest();
+	
+	//      "SELECT DISTINCT p FROM Department d JOIN d.employees e JOIN e.projects p")
+
+	@Query("SELECT u FROM Victim u JOIN u.shelterRequest r JOIN r.AddMembers p ")
+	List<Victim> getDetailsOfShelterrequest();
 	
 }
-
-// getVictimByUsername(vname,vpass);

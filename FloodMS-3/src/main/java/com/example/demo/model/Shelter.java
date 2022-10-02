@@ -14,7 +14,8 @@ public class Shelter {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int shelter_id;
+	@Column(name = "sh_id")
+	private long shelter_id;
 	
 	@Column(name = "Name")
     private String sh_name;
@@ -36,7 +37,7 @@ public class Shelter {
     	
     }
 
-	public Shelter(int shelter_id, String sh_name, String sh_addr, String sh_city, String sh_email, String sh_cont) {
+	public Shelter(long shelter_id, String sh_name, String sh_addr, String sh_city, String sh_email, String sh_cont) {
 		super();
 		this.shelter_id = shelter_id;
 		this.sh_name = sh_name;
@@ -46,11 +47,11 @@ public class Shelter {
 		this.sh_cont = sh_cont;
 	}
 
-	public int getShelter_id() {
+	public long getShelter_id() {
 		return shelter_id;
 	}
 
-	public void setShelter_id(int shelter_id) {
+	public void setShelter_id(long shelter_id) {
 		this.shelter_id = shelter_id;
 	}
 
@@ -100,7 +101,6 @@ public class Shelter {
 				+ sh_city + ", sh_email=" + sh_email + ", sh_cont=" + sh_cont + "]";
 	}
 
-    
 
 
     

@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import org.springframework.web.bind.annotation.RestController;
 import com.example.demo.Services.VictimService;
-
+import com.example.demo.model.AddMembers;
 import com.example.demo.model.Victim;
 
 @RestController
@@ -56,8 +56,9 @@ public class VictimController {
 			
 		  return this.victimService.deleteVictimById(vid);  
 		}  
-				
-	@RequestMapping(path = "/login", method = RequestMethod.POST) // Login
+	
+	// Login Method
+	@RequestMapping(path = "/login", method = RequestMethod.POST) 
 	public List<Victim> getUsername(@RequestBody Victim victim)
 	{
 		String vname = victim.getUsername();
@@ -80,16 +81,64 @@ public class VictimController {
 	
 	}
 	
-	@RequestMapping(path = "/Details", method = RequestMethod.GET) 
+	              // Choosing Shelter 
+		@RequestMapping(path = "/ShelterReq", method = RequestMethod.POST) 
+				public ResponseEntity <Victim> ShelterRequest(@RequestBody Victim victims)
+				{
+					long vid = victims.getVictim_id();					
+					long sh_id = victims.getShelterRequest().getShelter().getShelter_id();
+					
+					System.out.println(vid);
+					System.out.println(sh_id);
+					
+				return this.victimService.ShelterReq(vid,sh_id);
+				
+			   }
+				
+				// Add Member Details To shelter Request 
+				@RequestMapping(path = "/AddMembertoShelterRequest", method = RequestMethod.POST) 
+				public ResponseEntity <Victim> AddMembertoShelterRequest(@RequestBody Victim victims)
+				{
+					long vid = victims.getVictim_id();
+										
+					long sh_id = victims.getShelterRequest().getShelter().getShelter_id();
+					
+					System.out.println(vid);
+					System.out.println(sh_id);
+					
+					long shreq_id = victims.getShelterRequest().getShelter_reqid();
+					
+					System.out.println(shreq_id);					
+					
+					
+				return this.victimService.AddMember(vid,shreq_id,victims);
+				
+			}
+				
+				
+				
+				
+				
+	
 	// Resecue Request Details
 
-	public List<Victim> getDetailOfrequest()
+	@RequestMapping(path = "/RescueDetails", method = RequestMethod.GET) 
+	public List<Victim> getDetailOfRescuerequest()
 	{	
-		return this.victimService.getDetailOfrequest();
+		return this.victimService.getDetailsOfRescuerequest();
 	}
 	
 	
 	
+	// Shelter Request Details
+
+		@RequestMapping(path = "/ShelterDetails", method = RequestMethod.GET) 
+
+		public List<Victim> getDetailOfShelterrequest()
+		{	
+			return this.victimService.getDetailsOfShelterrequest();
+		}
+		
 	
 	
 	

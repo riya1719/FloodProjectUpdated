@@ -45,17 +45,24 @@ public class Victim {
 	private String password;
 	
 	@OneToOne (targetEntity = RescueRequest.class, cascade = CascadeType.ALL)
-	@JoinColumn(name = "v_fk", referencedColumnName = "r_reqid")
+	@JoinColumn(name = "Resreq_fk", referencedColumnName = "r_reqid")
 	private RescueRequest rescueRequest;
 	
+	@OneToOne (targetEntity = ShelterRequest.class, cascade = CascadeType.ALL)
+	@JoinColumn(name = "shreq_fk", referencedColumnName = "shreq_id")
+	private ShelterRequest shelterRequest;
+	
+	@OneToOne (targetEntity = FM_Request.class, cascade = CascadeType.ALL)
+	@JoinColumn(name = "fmreq_fk", referencedColumnName = "FMreq_id")
+	private FM_Request fm_Request;
 	
 	public Victim() {
 	
 	}
 
-
 	public Victim(long victim_id, String v_fname, String v_lname, long v_contact, String v_addr, String v_city,
-			String v_email, String username, String password, RescueRequest rescueRequest) {
+			String v_email, String username, String password, RescueRequest rescueRequest,
+			ShelterRequest shelterRequest, FM_Request fm_Request) {
 		super();
 		this.victim_id = victim_id;
 		this.v_fname = v_fname;
@@ -67,12 +74,9 @@ public class Victim {
 		this.username = username;
 		this.password = password;
 		this.rescueRequest = rescueRequest;
+		this.shelterRequest = shelterRequest;
+		this.fm_Request = fm_Request;
 	}
-
-
-
-
-
 
 
 
@@ -174,29 +178,32 @@ public class Victim {
 	public void setRescueRequest(RescueRequest rescueRequest) {
 		this.rescueRequest = rescueRequest;
 	}
+	
 
+	public ShelterRequest getShelterRequest() {
+		return shelterRequest;
+	}
 
+	public void setShelterRequest(ShelterRequest shelterRequest) {
+		this.shelterRequest = shelterRequest;
+	}
 
+	public FM_Request getFm_Request() {
+		return fm_Request;
+	}
 
-
-
-
+	public void setFm_Request(FM_Request fm_Request) {
+		this.fm_Request = fm_Request;
+	}
 
 	@Override
 	public String toString() {
 		return "Victim [victim_id=" + victim_id + ", v_fname=" + v_fname + ", v_lname=" + v_lname + ", v_contact="
 				+ v_contact + ", v_addr=" + v_addr + ", v_city=" + v_city + ", v_email=" + v_email + ", username="
-				+ username + ", password=" + password + ", rescueRequest=" + rescueRequest + "]";
+				+ username + ", password=" + password + ", rescueRequest=" + rescueRequest + ", shelterRequest="
+				+ shelterRequest + ", fm_Request=" + fm_Request + "]";
 	}
 
-
-
-	
-	
-
-
-	
-	
-     
+  
 
 }

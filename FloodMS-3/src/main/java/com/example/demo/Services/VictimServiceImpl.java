@@ -2,10 +2,12 @@ package com.example.demo.Services;
 
 import java.util.ArrayList;
 
+
 import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -14,8 +16,13 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.demo.exception.ResourceNotFoundException;
+import com.example.demo.model.AddMembers;
 import com.example.demo.model.RescueRequest;
+import com.example.demo.model.Shelter;
+import com.example.demo.model.ShelterRequest;
 import com.example.demo.model.Victim;
+import com.example.demo.repository.ShelterRepository;
+import com.example.demo.repository.ShelterRequestRepository;
 import com.example.demo.repository.VictimRepository;
 
 @Service
@@ -24,8 +31,11 @@ public class VictimServiceImpl implements VictimService {
 	@Autowired
 	private VictimRepository victimRepository;
 	
-//	@Autowired
-//	public RescueRequest rescueRequest;
+	@Autowired
+	public ShelterRepository shelterRepository;
+	
+	@Autowired
+	public ShelterRequestRepository shelterRequestRepository;
 	
 	
 	@Override
@@ -59,7 +69,7 @@ public class VictimServiceImpl implements VictimService {
 	    	
 	    	victimRepository.delete(victim); 
 	    	
-			return ResponseEntity.ok(victim);
+			return ResponseEntity.ok(victim); 
 }
 	    
 		@Override 
@@ -85,7 +95,7 @@ public class VictimServiceImpl implements VictimService {
 			Victim victim = victimRepository.findById(vid)
 			.orElseThrow(() -> new ResourceNotFoundException("Victim does not exit with id: " + vid));
 			
-			// victim.setV_addr(victims.getV_addr());
+		   // victim.setV_addr(victims.getV_addr());
 			RescueRequest resreq = new RescueRequest();
 			resreq.setV_count(count);
 			victim.setRescueRequest(resreq);
@@ -96,15 +106,63 @@ public class VictimServiceImpl implements VictimService {
 		}
 		
 		// Details of victim and rescue req
-		public List<Victim> getDetailOfrequest()
+		public List<Victim> getDetailsOfRescuerequest()
 		{
 			List<Victim> listVictim = new ArrayList<>();
-			listVictim = victimRepository.getDetails();
+			listVictim = victimRepository.getDetailsOfRescuerequest();
 			return listVictim;
 		}
 		
-		
+		ShelterRequest shreq = new ShelterRequest();
 
+		
+		 // ShelterReq
+		public ResponseEntity<Victim> ShelterReq(long vid,long sh_id)
+		{
+			Victim victim = victimRepository.findById(vid)
+					.orElseThrow(() -> new ResourceNotFoundException("Victim does not exit with id: " + vid));
+					
+			
+			// find shelter details by shelter ID --> sh_id
+			Shelter sh = shelterRepository.findById(sh_id)
+					.orElseThrow(() -> new ResourceNotFoundException("Shelter does not exit with id: " + sh_id));
+			
+			// set shelterDetails --> sh in ShelterRequest obj --> shreq
+			   shreq.setShelter(sh);
+			   victim.setShelterRequest(shreq);
+																
+					Victim updatedVictim = victimRepository.save(victim);
+				return ResponseEntity.ok(updatedVictim);
+		}
+		
+		// Add Members in shelter Request
+		public ResponseEntity<Victim> AddMember(long vid,long shreq_id,Victim victims)
+		{
+			Victim victim = victimRepository.findById(vid)
+					.orElseThrow(() -> new ResourceNotFoundException("Victim does not exit with id: " + vid));
+			
+			ShelterRequest ShelterRequest = shelterRequestRepository.findById(shreq_id)
+					.orElseThrow(() -> new ResourceNotFoundException("Shelter Request does not exit with id: " + shreq_id));
+						
+			List<AddMembers> AddMembers = victims.getShelterRequest().getAddMembers();
+				
+			victim.getShelterRequest().setAddMembers(AddMembers);
+			
+			
+			Victim updatedVictim = victimRepository.save(victim);
+			return ResponseEntity.ok(updatedVictim);
+			
+		}
+				
+		
+		// Details of victims ShelterRequest , Shelter and AddMembers request
+				public List<Victim> getDetailsOfShelterrequest()
+				{
+					List<Victim> listVictim = new ArrayList<>();
+					listVictim = victimRepository.getDetailsOfShelterrequest();
+					return listVictim;
+				}
+		
 	    
 	    
-}
+		}

@@ -29,10 +29,18 @@ public interface VictimService {
 	 
 	List<Victim> getUsername(String vname, String vpass); // login
 	
-  //  Victim addVictimReq(@RequestBody Victim victims); // RescueReq
+   // RescueReq
     ResponseEntity<Victim>  rescueReq(long vid,int count);
     
-    List<Victim> getDetailOfrequest(); // All Details
+    // ShelterReq
+    ResponseEntity<Victim> ShelterReq(long vid,long sh_id);
+    
+    ResponseEntity<Victim> AddMember(long vid,long sh_id,Victim victims);
+     
+    List<Victim> getDetailsOfRescuerequest(); // All Details Rescue Resquest 
+    
+    List<Victim> getDetailsOfShelterrequest(); // All Details Shelter Resquest 
+
 	
 	
 }
