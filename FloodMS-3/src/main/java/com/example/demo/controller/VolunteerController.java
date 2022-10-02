@@ -14,10 +14,12 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.Services.VolunteerService;
 import com.example.demo.exception.ResourceNotFoundException;
+import com.example.demo.model.Victim;
 import com.example.demo.model.Volunteer;
 import com.example.demo.repository.VolunteerRepository;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -39,5 +41,15 @@ public class VolunteerController {
 	public List<Volunteer> getVolunteer(){	
 	    return this.volunteerService.getVolunteer();
 	}
+	
+	// Login Method
+		@RequestMapping(path = "/Volunteerlogin", method = RequestMethod.POST) 
+		public Volunteer getVolunteerLogin(@RequestBody Volunteer volunteer)
+		{
+			String name = volunteer.getUsername();
+			String password = volunteer.getPassword();
+			System.out.println(name);
+			return this.volunteerService.getVolunteer(name,password);
+		}
 		
 }

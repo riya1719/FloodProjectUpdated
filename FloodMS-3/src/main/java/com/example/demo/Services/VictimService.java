@@ -27,7 +27,7 @@ public interface VictimService {
 	
 	List<Victim> find(); //find victim by userdefied query
 	 
-	List<Victim> getUsername(String vname, String vpass); // login
+	Victim getUsername(String vname, String vpass); // login
 	
    // RescueReq
     ResponseEntity<Victim>  rescueReq(long vid,int count);

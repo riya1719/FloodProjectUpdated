@@ -5,6 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.example.demo.exception.ResourceNotFoundException;
+import com.example.demo.model.Organization;
 import com.example.demo.model.Volunteer;
 import com.example.demo.repository.VolunteerRepository;
 @Service
@@ -29,5 +31,17 @@ public class VolunteerServiceImpl implements VolunteerService{
 		return volunteerRepository.findAll();
 		
 	}
+	// Login
+	public Volunteer getVolunteer(String name,String password)
+	{
+		Volunteer volunteer = new Volunteer();
+		volunteer = volunteerRepository.getVolunteer(name,password)
+		    	.orElseThrow(() -> new ResourceNotFoundException("Bad Credentials!! ReTry"));
+
+		return volunteer;
+	}
+
+
+	
 
 }

@@ -27,8 +27,7 @@ public class RescueRequest {
 	
 	@Column(name = "COUNT_OF_PEOPLE")
     private int v_count;
-	
-	
+		
 	public RescueRequest() {
 		
 	}
@@ -79,32 +78,6 @@ public class RescueRequest {
 	@Override
 	public String toString() {
 		return "RescueRequest [rescue_reqid=" + rescue_reqid + ", date=" + date + ", v_count=" + v_count + "]";
-	}
-
-
-
-
-
-	
-	
-	
-	
-
-
-
-
-
-
-	
-	
-	
-
-	
-
-	
-	
-	
-	
-	
+	}	
 
 }

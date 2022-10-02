@@ -1,10 +1,7 @@
 package com.example.demo.model;
 
 import javax.persistence.Entity;
-
-
 import javax.persistence.Column;
-
 import javax.persistence.GenerationType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -45,10 +42,10 @@ public class Organization {
 	@Column(name = "WEBSITE")
 	private String  weburl;
 	
-	@Column(name = "USERNAME")
+	@Column(name = "USERNAME" , unique = true)
 	private String  username;
 	
-	@Column(name = "PASSWORD")
+	@Column(name = "PASSWORD" , unique = true)
 	private String password ;
 
 	public Organization() {
@@ -175,9 +172,5 @@ public class Organization {
 				+ org_city + ", org_contact=" + org_contact + ", org_email=" + org_email + ", weburl=" + weburl
 				+ ", username=" + username + ", password=" + password + "]";
 	}
-
-	
-	
-
 	
 }

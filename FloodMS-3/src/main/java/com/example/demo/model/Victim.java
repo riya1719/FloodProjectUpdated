@@ -3,7 +3,6 @@ package com.example.demo.model;
 import javax.persistence.Entity;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
-
 import javax.persistence.GenerationType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -38,10 +37,10 @@ public class Victim {
 	@Column(name = "EMAIL")
 	private String v_email;
 	
-	@Column(name = "USERNAME")
+	@Column(name = "USERNAME" , unique = true)
 	private String username;
 	
-	@Column(name = "PASSWORD")
+	@Column(name = "PASSWORD" , unique = true)
 	private String password;
 	
 	@OneToOne (targetEntity = RescueRequest.class, cascade = CascadeType.ALL)

@@ -1,26 +1,20 @@
 package com.example.demo.controller;
-import java.util.HashMap;
+
 
 import java.util.List;
-import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.model.Organization;
-import com.example.demo.model.Victim;
 import com.example.demo.Services.OrganizationService;
-import com.example.demo.Services.VictimService;
-import com.example.demo.exception.ResourceNotFoundException;
-import com.example.demo.repository.OrganizationRepository;
+
 
 import org.springframework.web.bind.annotation.RequestBody;
 @RestController
@@ -28,7 +22,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 @CrossOrigin
 @Service
 public class OrganizationController {
-	@Autowired               //making obj of interface which is not allowedd
+	@Autowired               
 	private OrganizationService organizationService;
 	
 	@PostMapping("/organizations")  //post method mapping for url request (/victims)
@@ -37,9 +31,19 @@ public class OrganizationController {
 	}
 	
 	@GetMapping("/organizations")
-	public List<Organization> getOrganization(){	
-	    return this.organizationService.getOrganization();
+	public List<Organization> getAllOrganization(){	
+	    return this.organizationService.getAllOrganization();
 	}
+	
+	// Login Method
+		@RequestMapping(path = "/Organizationlogin", method = RequestMethod.POST) 
+		public Organization getOrganizationLogin(@RequestBody Organization organization)
+		{
+			String name = organization.getUsername();
+			String password = organization.getPassword();
+			System.out.println(name);
+			return this.organizationService.getOrganization(name,password);
+		}
 	
 	
 

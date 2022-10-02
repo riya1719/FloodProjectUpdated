@@ -1,10 +1,7 @@
 package com.example.demo.model;
 
 import javax.persistence.Entity;
-
-
 import javax.persistence.Column;
-
 import javax.persistence.GenerationType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -16,7 +13,9 @@ public class Volunteer {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int victim_id;
+	@Column(name = "Volunteer_id")
+
+	private long volunteer_id;
 	
 	@Column(name = "FIRST_NAME")
 	private String vl_fname;
@@ -42,19 +41,19 @@ public class Volunteer {
 	@Column(name = "Type_Of_Work")
 	private String vl_tow;
 	
-	@Column(name = "USERNAME")
+	@Column(name = "USERNAME" ,unique = true)
 	private String username;
 	
-	@Column(name = "PASSWORD")
+	@Column(name = "PASSWORD" ,unique = true)
 	private String password;
 
 	public Volunteer() {
 	}
 
-	public Volunteer(int victim_id, String vl_fname, String vl_lname, String blood_grp, String vl_contact,
+	public Volunteer(int volunteer_id, String vl_fname, String vl_lname, String blood_grp, String vl_contact,
 			String vl_addr, String vl_city, String vl_email, String vl_tow, String username, String password) {
 		super();
-		this.victim_id = victim_id;
+		this.volunteer_id = volunteer_id;
 		this.vl_fname = vl_fname;
 		this.vl_lname = vl_lname;
 		this.blood_grp = blood_grp;
@@ -69,12 +68,12 @@ public class Volunteer {
 
 
 
-	public int getVictim_id() {
-		return victim_id;
+	public long getVolunteer_id() {
+		return volunteer_id;
 	}
 
-	public void setVictim_id(int victim_id) {
-		this.victim_id = victim_id;
+	public void setVictim_id(int volunteer_id) {
+		this.volunteer_id = volunteer_id;
 	}
 
 	public String getVl_fname() {
@@ -159,7 +158,7 @@ public class Volunteer {
 
 	@Override
 	public String toString() {
-		return "Volunteer [victim_id=" + victim_id + ", vl_fname=" + vl_fname + ", vl_lname=" + vl_lname
+		return "Volunteer [volunteer_id=" + volunteer_id + ", vl_fname=" + vl_fname + ", vl_lname=" + vl_lname
 				+ ", blood_grp=" + blood_grp + ", vl_contact=" + vl_contact + ", vl_addr=" + vl_addr + ", vl_city="
 				+ vl_city + ", vl_email=" + vl_email + ", vl_tow=" + vl_tow + ", username=" + username + ", password="
 				+ password + "]";

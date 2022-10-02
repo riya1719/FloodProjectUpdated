@@ -11,5 +11,7 @@ public interface VolunteerService {
 	Volunteer addVolunteer(Volunteer Volunteers);
 	
 	public List<Volunteer> getVolunteer();
+	
+	public Volunteer getVolunteer(String name,String password);
 
 }

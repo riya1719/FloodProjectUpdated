@@ -58,8 +58,8 @@ public class VictimController {
 		}  
 	
 	// Login Method
-	@RequestMapping(path = "/login", method = RequestMethod.POST) 
-	public List<Victim> getUsername(@RequestBody Victim victim)
+	@RequestMapping(path = "/Victimlogin", method = RequestMethod.POST) 
+	public Victim getVictimLogin(@RequestBody Victim victim)
 	{
 		String vname = victim.getUsername();
 		String vpass = victim.getPassword();

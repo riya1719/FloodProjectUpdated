@@ -18,14 +18,13 @@ public interface VictimRepository extends JpaRepository<Victim,Long>{
 	@Query("SELECT v FROM Victim v WHERE v.username=:username")
 	List<Victim> findByVictim(@Param("username") String vname);
 	
-	@Query("SELECT v FROM Victim v WHERE v.username=:username and v.password=:password")
-	List<Victim> getVictimByName(@Param("username") String vname, @Param("password") String vpass);
+	@Query("SELECT v FROM Victim v WHERE v.username=:username and v.password=:password") //Login
+	Victim getVictimByName(@Param("username") String vname, @Param("password") String vpass);
 	
 	
 	@Query("SELECT u FROM Victim u JOIN u.rescueRequest r")
 	List<Victim> getDetailsOfRescuerequest();
 	
-	//      "SELECT DISTINCT p FROM Department d JOIN d.employees e JOIN e.projects p")
 
 	@Query("SELECT u FROM Victim u JOIN u.shelterRequest r JOIN r.AddMembers p ")
 	List<Victim> getDetailsOfShelterrequest();
