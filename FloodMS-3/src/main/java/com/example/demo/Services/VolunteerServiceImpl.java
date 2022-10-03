@@ -1,12 +1,9 @@
 package com.example.demo.Services;
 
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.example.demo.exception.ResourceNotFoundException;
-import com.example.demo.model.Organization;
 import com.example.demo.model.Volunteer;
 import com.example.demo.repository.VolunteerRepository;
 @Service
@@ -27,7 +24,7 @@ public class VolunteerServiceImpl implements VolunteerService{
 	@Override
 	public List<Volunteer> getVolunteer() {
 		
-		//findall o return all volunteers
+		//findAll return all volunteers
 		return volunteerRepository.findAll();
 		
 	}
@@ -35,8 +32,7 @@ public class VolunteerServiceImpl implements VolunteerService{
 	public Volunteer getVolunteer(String name,String password)
 	{
 		Volunteer volunteer = new Volunteer();
-		volunteer = volunteerRepository.getVolunteer(name,password)
-		    	.orElseThrow(() -> new ResourceNotFoundException("Bad Credentials!! ReTry"));
+		volunteer = volunteerRepository.getVolunteer(name,password);
 
 		return volunteer;
 	}

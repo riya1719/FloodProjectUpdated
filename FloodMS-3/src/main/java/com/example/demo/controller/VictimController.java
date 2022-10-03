@@ -117,6 +117,20 @@ public class VictimController {
 				
 				
 				
+				// Food & Medical Request 
+				@RequestMapping(path = "/FMRequest", method = RequestMethod.POST) 
+				public ResponseEntity <Victim> FoodAndmedicalRequest(@RequestBody Victim victims)
+				{
+					long vid = victims.getVictim_id();
+															
+					System.out.println(vid);										
+					
+				return this.victimService.FoodAndmedicalRequest(vid,victims);
+				
+			}
+				
+				
+				
 				
 				
 	
@@ -139,8 +153,15 @@ public class VictimController {
 			return this.victimService.getDetailsOfShelterrequest();
 		}
 		
-	
-	
+		// Food&Medical Request Details
+
+				@RequestMapping(path = "/FoodMedicalDetails", method = RequestMethod.GET) 
+
+				public List<Victim> getDetailOfFoodMedicalequest()
+				{	
+					return this.victimService.getDetailsOfFoodMedicalrequest();
+				}
+
 	
 		
 }

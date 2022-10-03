@@ -36,10 +36,16 @@ public interface VictimService {
     ResponseEntity<Victim> ShelterReq(long vid,long sh_id);
     
     ResponseEntity<Victim> AddMember(long vid,long sh_id,Victim victims);
+    
+    // Food & Medical Request
+    ResponseEntity<Victim> FoodAndmedicalRequest(long vid,Victim victims);
      
     List<Victim> getDetailsOfRescuerequest(); // All Details Rescue Resquest 
     
     List<Victim> getDetailsOfShelterrequest(); // All Details Shelter Resquest 
+    
+    List<Victim> getDetailsOfFoodMedicalrequest(); // All Details FoodMedical Resquest 
+
 
 	
 	

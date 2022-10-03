@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-    <fullyQualifiedTypeName name="com.example.demo.model.Medical"/>
     <fullyQualifiedTypeName name="com.example.demo.Services.MedicalService"/>
     <fullyQualifiedTypeName name="com.example.demo.model.Individual"/>
     <fullyQualifiedTypeName name="com.example.demo.repository.IndividualRepository"/>
@@ -60,4 +59,5 @@
     <fullyQualifiedTypeName name="com.example.demo.repository.ShelterRepository"/>
     <fullyQualifiedTypeName name="com.example.demo.model.AddMembers"/>
     <fullyQualifiedTypeName name="com.example.demo.repository.ShelterRequestRepository"/>
+    <fullyQualifiedTypeName name="com.example.demo.model.FM_Request"/>
 </qualifiedTypeNameHistroy>

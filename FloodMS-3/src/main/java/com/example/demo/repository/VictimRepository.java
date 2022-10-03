@@ -22,11 +22,14 @@ public interface VictimRepository extends JpaRepository<Victim,Long>{
 	Victim getVictimByName(@Param("username") String vname, @Param("password") String vpass);
 	
 	
-	@Query("SELECT u FROM Victim u JOIN u.rescueRequest r")
+	@Query("SELECT u FROM Victim u JOIN u.rescueRequest r") // All Rescue Request 
 	List<Victim> getDetailsOfRescuerequest();
 	
 
-	@Query("SELECT u FROM Victim u JOIN u.shelterRequest r JOIN r.AddMembers p ")
+	@Query("SELECT u FROM Victim u JOIN u.shelterRequest r JOIN r.AddMembers p ") // All Shelter Request
 	List<Victim> getDetailsOfShelterrequest();
+	
+	@Query("SELECT u FROM Victim u JOIN u.fm_Request r") // All Food ANd Medical Request
+	List<Victim> getDetailsOfFoodAndmedicalrequest();
 	
 }

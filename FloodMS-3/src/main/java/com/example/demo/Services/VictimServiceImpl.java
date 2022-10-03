@@ -1,9 +1,6 @@
 package com.example.demo.Services;
 
 import java.util.ArrayList;
-
-
-
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -11,6 +8,8 @@ import org.springframework.stereotype.Service;
 import com.example.demo.exception.ResourceNotFoundException;
 
 import com.example.demo.model.AddMembers;
+import com.example.demo.model.FM_Request;
+import com.example.demo.model.FoodAndMedical;
 import com.example.demo.model.RescueRequest;
 import com.example.demo.model.Shelter;
 import com.example.demo.model.ShelterRequest;
@@ -129,13 +128,14 @@ public class VictimServiceImpl implements VictimService {
 				return ResponseEntity.ok(updatedVictim);
 		}
 		
+		
 		// Add Members in shelter Request
 		public ResponseEntity<Victim> AddMember(long vid,long shreq_id,Victim victims)
 		{
 			Victim victim = victimRepository.findById(vid)
 					.orElseThrow(() -> new ResourceNotFoundException("Victim does not exit with id: " + vid));
 			
-			ShelterRequest ShelterRequest = shelterRequestRepository.findById(shreq_id)
+			               shelterRequestRepository.findById(shreq_id)
 					.orElseThrow(() -> new ResourceNotFoundException("Shelter Request does not exit with id: " + shreq_id));
 						
 			List<AddMembers> AddMembers = victims.getShelterRequest().getAddMembers();
@@ -157,6 +157,36 @@ public class VictimServiceImpl implements VictimService {
 					return listVictim;
 				}
 		
-	    
+				 // Food And Medical Req
+				FM_Request fmreq = new FM_Request();
+
+
+			   public  ResponseEntity<Victim> FoodAndmedicalRequest(long vid,Victim victims)
+			   {
+				   Victim victim = victimRepository.findById(vid)
+							.orElseThrow(() -> new ResourceNotFoundException("Victim does not exit with id: " + vid));
+							
+				   List<FoodAndMedical> fmRequest = victims.getFm_Request().getFoodAndMedical();
+				   
+				        String type =  victims.getFm_Request().getReq_type();
+				        
+				        fmreq.setReq_type(type);
+				   
+				           fmreq.setFoodAndMedical(fmRequest);
+							victim.setFm_Request(fmreq);
+								
+							
+							Victim updatedVictim = victimRepository.save(victim);
+						return ResponseEntity.ok(updatedVictim);
+			   }
+			   
+			// Details of victims and Food&Medical request
+				public List<Victim> getDetailsOfFoodMedicalrequest()
+				{
+					List<Victim> listVictim = new ArrayList<>();
+					listVictim = victimRepository.getDetailsOfFoodAndmedicalrequest();
+					return listVictim;
+				}
+
 	    
 		}
