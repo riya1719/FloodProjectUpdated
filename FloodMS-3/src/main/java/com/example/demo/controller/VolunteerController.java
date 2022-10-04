@@ -44,7 +44,7 @@ public class VolunteerController {
 	
 	// Login Method
 		@RequestMapping(path = "/Volunteerlogin", method = RequestMethod.POST) 
-		public Volunteer getVolunteerLogin(@RequestBody Volunteer volunteer)
+		public ResponseEntity<Volunteer> getVolunteerLogin(@RequestBody Volunteer volunteer)
 		{
 			String name = volunteer.getUsername();
 			String password = volunteer.getPassword();

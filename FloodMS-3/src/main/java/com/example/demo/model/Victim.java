@@ -1,6 +1,7 @@
 package com.example.demo.model;
 
 import javax.persistence.Entity;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.GenerationType;
@@ -202,6 +203,7 @@ public class Victim {
 				+ username + ", password=" + password + ", rescueRequest=" + rescueRequest + ", shelterRequest="
 				+ shelterRequest + ", fm_Request=" + fm_Request + "]";
 	}
+
 
   
 

@@ -1,6 +1,8 @@
 package com.example.demo.controller;
 
 import java.util.List;
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -12,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import org.springframework.web.bind.annotation.RestController;
 import com.example.demo.Services.VictimService;
-import com.example.demo.model.AddMembers;
 import com.example.demo.model.Victim;
 
 @RestController
@@ -59,7 +60,7 @@ public class VictimController {
 	
 	// Login Method
 	@RequestMapping(path = "/Victimlogin", method = RequestMethod.POST) 
-	public Victim getVictimLogin(@RequestBody Victim victim)
+	public ResponseEntity<Victim> getVictimLogin(@RequestBody Victim victim)
 	{
 		String vname = victim.getUsername();
 		String vpass = victim.getPassword();

@@ -14,9 +14,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.model.Organization;
 import com.example.demo.Services.OrganizationService;
-
-
 import org.springframework.web.bind.annotation.RequestBody;
+
+
 @RestController
 @RequestMapping("/api/v1")
 @CrossOrigin
@@ -37,16 +37,13 @@ public class OrganizationController {
 	
 	// Login Method
 		@RequestMapping(path = "/Organizationlogin", method = RequestMethod.POST) 
-		public Organization getOrganizationLogin(@RequestBody Organization organization)
+		public ResponseEntity<Organization> getOrganizationLogin(@RequestBody Organization organization)
 		{
 			String name = organization.getUsername();
 			String password = organization.getPassword();
 			System.out.println(name);
 			return this.organizationService.getOrganization(name,password);
 		}
-	
-	
-
 		
 }
 

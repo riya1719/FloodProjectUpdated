@@ -2,6 +2,8 @@ package com.example.demo.Services;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -75,11 +77,13 @@ public class VictimServiceImpl implements VictimService {
 
 
 		@Override //Login
-		public Victim getUsername(String vname,String vpass)
+		public ResponseEntity<Victim> getUsername(String vname,String vpass)
 		{
-			Victim victim = new Victim();
-			victim= victimRepository.getVictimByName(vname,vpass);
-			return victim;
+			//Victim victim = new Victim();
+			Victim victim = victimRepository.getVictimByName(vname,vpass)
+			   .orElseThrow(() -> new ResourceNotFoundException("Bad Credential "));
+
+			return ResponseEntity.ok(victim);
 		}
 		
 		// Victim Rescue Request

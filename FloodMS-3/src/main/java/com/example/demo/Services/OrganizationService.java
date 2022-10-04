@@ -13,6 +13,7 @@ public interface OrganizationService {
 	public Organization addOrganization(Organization organization);
 	
 	public List<Organization> getAllOrganization(); 
-	
-	public Organization getOrganization(String name,String password); //login
+		
+	public ResponseEntity<Organization> getOrganization(String name,String password); //login
+
 }

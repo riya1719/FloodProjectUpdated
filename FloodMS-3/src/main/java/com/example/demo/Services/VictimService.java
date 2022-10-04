@@ -19,7 +19,7 @@ public interface VictimService {
 	
 	Victim addVictim(Victim victims); //registration (add victim)
 	
-	public List<Victim> getVictim(); // Display (Get victim)
+    List<Victim> getVictim(); // Display (Get victim)
 		    
 	ResponseEntity<Victim> getVictimById(long vid); // Find by Id	
 	
@@ -27,7 +27,7 @@ public interface VictimService {
 	
 	List<Victim> find(); //find victim by userdefied query
 	 
-	Victim getUsername(String vname, String vpass); // login
+	ResponseEntity<Victim> getUsername(String vname, String vpass); // login
 	
    // RescueReq
     ResponseEntity<Victim>  rescueReq(long vid,int count);

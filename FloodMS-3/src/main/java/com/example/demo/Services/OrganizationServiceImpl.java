@@ -33,14 +33,17 @@ public class OrganizationServiceImpl implements OrganizationService {
 		
 	}
 	
-	//Login
-	public Organization getOrganization(String name,String password)
+	@Override //Login
+	public ResponseEntity<Organization> getOrganization(String name,String password)
 	{
-		Organization organization = new Organization();
-		organization = organizationRepository.getOrganization(name,password);
-				
-		return organization; 
+		Organization organization = organizationRepository.getOrganization(name,password)
+				   .orElseThrow(() -> new ResourceNotFoundException("Bad Credential "));
+			
+		return ResponseEntity.ok(organization); 
 	}
+	
+	
+
 	
 	
 

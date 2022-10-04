@@ -2,6 +2,8 @@ package com.example.demo.repository;
 
 
 import java.util.List;
+import java.util.Optional;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -19,7 +21,10 @@ public interface VictimRepository extends JpaRepository<Victim,Long>{
 	List<Victim> findByVictim(@Param("username") String vname);
 	
 	@Query("SELECT v FROM Victim v WHERE v.username=:username and v.password=:password") //Login
-	Victim getVictimByName(@Param("username") String vname, @Param("password") String vpass);
+	Optional<Victim> getVictimByName(@Param("username") String vname, @Param("password") String vpass);
+	
+	@Query("SELECT v FROM Victim v WHERE v.username=:username and v.password=:password") //Login from login
+	Optional<Victim> findByUsernameAndPassword(@Param("username") String vname, @Param("password") String vpass);
 	
 	
 	@Query("SELECT u FROM Victim u JOIN u.rescueRequest r") // All Rescue Request 
