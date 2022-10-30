@@ -21,12 +21,13 @@ import com.example.demo.model.Victim;
 @RequestMapping("/api/v1")
 public class VictimController {
 	
-	@Autowired               //making obj of interface which is not allowedd
+	@Autowired           
 	private VictimService victimService;
 	
-	@PostMapping("/victims")  // save victim details
-	public Victim addVictim(@RequestBody Victim victims) {
-		return this.victimService.addVictim(victims);
+	@PostMapping("/victims")  // save victim details -> Registration
+	public ResponseEntity<Victim> addVictim(@RequestBody Victim victim)
+	{
+		return this.victimService.addVictim(victim);
 	}
 	
 	@GetMapping("/victims") // display details of victim

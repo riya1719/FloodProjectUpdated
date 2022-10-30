@@ -2,7 +2,6 @@ package com.example.demo.Services;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -33,11 +32,21 @@ public class VictimServiceImpl implements VictimService {
 	public ShelterRequestRepository shelterRequestRepository;
 	
 	
-	@Override
-	public Victim addVictim(Victim victims) {
+	@Override //Registration 
+	public ResponseEntity<Victim> addVictim(Victim victim) {
+	
+		try 
+		{
+			victimRepository.save(victim);
+		}
+		catch(Exception exp)
+		{
+			throw new ResourceNotFoundException("Duplicate Entry");
+		}
 		
-		victimRepository.save(victims);
-		return victims;
+		
+		return ResponseEntity.ok(victim);
+			
 	}
 
 	@Override
@@ -76,7 +85,7 @@ public class VictimServiceImpl implements VictimService {
 		}
 
 
-		@Override //Login
+		 //Login
 		public ResponseEntity<Victim> getUsername(String vname,String vpass)
 		{
 			//Victim victim = new Victim();

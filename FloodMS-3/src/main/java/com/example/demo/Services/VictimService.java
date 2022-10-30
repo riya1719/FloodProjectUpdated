@@ -1,23 +1,17 @@
 package com.example.demo.Services;
 
 import java.util.List;
-
 import java.util.Optional;
 
-import org.springframework.data.repository.query.Param;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestParam;
 
-import com.example.demo.model.RescueRequest;
 import com.example.demo.model.Victim;
 
 @Service
 public interface VictimService {
 	
-	Victim addVictim(Victim victims); //registration (add victim)
+	ResponseEntity<Victim> addVictim(Victim victim); //registration (add victim)
 	
     List<Victim> getVictim(); // Display (Get victim)
 		    

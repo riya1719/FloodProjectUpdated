@@ -25,7 +25,7 @@ public class ShelterRequestController {
 	@Autowired               //making obj of interface which is not allowedd
 	private ShelterRequestService shelterRequestService;
 	
-	@PostMapping("/ShelterRequests")  //post method mapping for url request (/volunteers)
+	@PostMapping("/ShelterRequests") 
 	public ShelterRequest addShelterRequest(@RequestBody ShelterRequest shelterRequests) {
 		return this.shelterRequestService.addShelterRequest(shelterRequests);
 	}
